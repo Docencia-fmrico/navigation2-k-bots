@@ -12,10 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef BT_BEHAVIOR__PATROL_HPP_
-#define BT_BEHAVIOR__PATROL_HPP_
+#ifndef BT_BEHAVIOR__GET_WAYPOINT_HPP_
+#define BT_BEHAVIOR__GET_WAYPOINT_HPP_
 
 #include <string>
+
+#include "geometry_msgs/msg/pose_stamped.hpp"
+#include "nav2_behavior_tree/bt_action_node.hpp"
 
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
@@ -24,30 +27,32 @@
 
 #include "rclcpp/rclcpp.hpp"
 
+
 namespace bt_behavior
 {
 
-class Patrol : public BT::ActionNodeBase
+class GetWaypoint : public BT::ActionNodeBase
 {
 public:
-  explicit Patrol(
+  explicit GetWaypoint(
     const std::string & xml_tag_name,
     const BT::NodeConfiguration & conf);
 
-  void halt();
   BT::NodeStatus tick();
 
   static BT::PortsList providedPorts()
   {
-    return BT::PortsList({});
+    return {
+      BT::OutputPort<geometry_msgs::msg::PoseStamped>("goal")
+    };
   }
 
 private:
   rclcpp::Node::SharedPtr node_;
-  rclcpp::Time start_time_;
-  rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr vel_pub_;
+  std::vector<std::string> waypoints_;
+  int counter;
 };
 
 }  // namespace bt_behavior
 
-#endif  // BT_BEHAVIOR__PATROL_HPP_
+#endif  // BT_BEHAVIOR__GET_WAYPOINT_HPP_
