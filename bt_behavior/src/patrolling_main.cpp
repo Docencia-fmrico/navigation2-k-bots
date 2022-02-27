@@ -44,6 +44,26 @@ int main(int argc, char * argv[])
   blackboard->set("node", node);
   BT::Tree tree = factory.createTreeFromFile(xml_file, blackboard);
 
+
+  // Extract param from file.
+  node->declare_parameter("waypoints");
+  std::vector<std::string> waypoints = node->get_parameter("waypoints").as_string_array();
+  
+  // Introduce param in blackbroad
+  blackboard->set("waypoints", waypoints);
+
+  // Number of waypoints
+  blackboard->set("number_wp", waypoints.size());
+  blackboard->set("visited_wp", 0);
+  
+  for (int i = 0; i < waypoints.size(); i++){
+    // Extract waypoint and coordinates and introduce them in blackboard
+    node->declare_parameter(waypoints[i]);
+    std::vector<double> coords = node->get_parameter(waypoints[i]).as_double_array();
+    blackboard->set(waypoints[i], coords);
+  }
+
+
   auto publisher_zmq = std::make_shared<BT::PublisherZMQ>(tree, 10, 2666, 2667);
 
   rclcpp::Rate rate(10);
