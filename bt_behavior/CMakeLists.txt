@@ -38,14 +38,16 @@ set(dependencies
     nav2_msgs
     ament_index_cpp
 )
-
 include_directories(include ${ZMQ_INCLUDE_DIRS})
 
-add_library(br2_patrol_bt_node SHARED src/bt_behavior/Patrol.cpp)
+add_library(br2_get_waypoint_bt_node SHARED src/bt_behavior/GetWaypoint.cpp)
 add_library(br2_move_bt_node SHARED src/bt_behavior/Move.cpp)
+add_library(br2_islastpoint_bt_node SHARED src/bt_behavior/IsLastPoint.cpp)
 list(APPEND plugin_libs
-  br2_patrol_bt_node
+  br2_get_waypoint_bt_node
   br2_move_bt_node
+  br2_islastpoint_bt_node
+
 )
 
 foreach(bt_plugin ${plugin_libs})
@@ -73,6 +75,7 @@ install(DIRECTORY behavior_tree_xml launch
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(DIRECTORY launch config DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

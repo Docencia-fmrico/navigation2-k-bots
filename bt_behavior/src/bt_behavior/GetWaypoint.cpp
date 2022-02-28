@@ -26,12 +26,14 @@ namespace bt_behavior {
 
 using namespace std::chrono_literals;
 
-GetWaypoint::GetWaypoint(const std::string& xml_tag_name, const BT::NodeConfiguration& conf)
+GetWaypoint::GetWaypoint(const std::string& xml_tag_name, const std::string & action_name, const BT::NodeConfiguration& conf)
     : BT::ActionNodeBase(xml_tag_name, conf)
 
 {
   config().blackboard->get("node", node_);
 }
+
+void GetWaypoint::halt() {return;}
 
 BT::NodeStatus GetWaypoint::tick() {
   int counter_visited; //Counter waypoint visited
@@ -40,6 +42,8 @@ BT::NodeStatus GetWaypoint::tick() {
   }
   config().blackboard->get("visited_wp", counter_visited);
 
+  RCLCPP_WARN(node_->get_logger(), "Visitados %d\n", counter_visited);
+  
   geometry_msgs::msg::PoseStamped waypoint; //Return waypoint
   std::vector<double> coords;
   config().blackboard->get(waypoints_[counter_visited], coords); //Get coords a goal
@@ -54,4 +58,17 @@ BT::NodeStatus GetWaypoint::tick() {
 }  // namespace bt_behavior
 
 #include "behaviortree_cpp_v3/bt_factory.h"
-BT_REGISTER_NODES(factory) { factory.registerNodeType<bt_behavior::GetWaypoint>("GetWaypoint"); }
+//BT_REGISTER_NODES(factory) { factory.registerNodeType<bt_behavior::GetWaypoint>("GetWaypoint"); }
+
+BT_REGISTER_NODES(factory)
+{
+  BT::NodeBuilder builder =
+    [](const std::string & name, const BT::NodeConfiguration & config)
+    {
+      return std::make_unique<bt_behavior::GetWaypoint>(
+        name, "get_waypoint", config);
+    };
+
+  factory.registerBuilder<bt_behavior::GetWaypoint>(
+    "GetWaypoint", builder);
+}

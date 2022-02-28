@@ -36,10 +36,11 @@ class GetWaypoint : public BT::ActionNodeBase
 public:
   explicit GetWaypoint(
     const std::string & xml_tag_name,
+    const std::string & action_name,
     const BT::NodeConfiguration & conf);
 
-  BT::NodeStatus tick();
-
+  BT::NodeStatus tick() override;
+  void halt() override;
   static BT::PortsList providedPorts()
   {
     return {

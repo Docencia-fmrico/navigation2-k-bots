@@ -3,20 +3,20 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="GetPoint" goal="{waypoint}"/>
+            <Action ID="GetWaypoint" goal="{waypoint}"/>
             <Action ID="Move" goal="{waypoint}"/>
-            <Action ID="IsLastPoint"/>
+            <Condition ID="IsLastPoint"/>
         </Sequence>
     </BehaviorTree>
     <!-- ////////// -->
     <TreeNodesModel>
-        <Action ID="GetPoint">
+        <Action ID="GetWaypoint">
             <output_port name="goal"/>
         </Action>
         <Action ID="Move">
             <input_port name="goal"/>
         </Action>
-        <Action ID="IsLastPoint"/>
+        <Condition ID="IsLastPoint"/>
     </TreeNodesModel>
     <!-- ////////// -->
 </root>

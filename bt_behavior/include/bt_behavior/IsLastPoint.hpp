@@ -35,9 +35,16 @@ public:
     const BT::NodeConfiguration & conf);
 
   BT::NodeStatus tick();
+
+  static BT::PortsList providedPorts()
+  {
+    return {};
+  }};
+
+  // namespace bt_behavior
 };
 
-}  // namespace bt_behavior
+
 
 
 #endif  // BT_BEHAVIOR__ISLASTPOINT_HPP_

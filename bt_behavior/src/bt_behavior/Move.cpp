@@ -41,7 +41,7 @@ Move::on_tick()
 {
   geometry_msgs::msg::PoseStamped goal;
   getInput("goal", goal);
-
+  RCLCPP_WARN(node_->get_logger(), "Destination [%lf, %lf]\n", goal.pose.position.x, goal.pose.position.y);
   goal_.pose = goal;
 }
 
