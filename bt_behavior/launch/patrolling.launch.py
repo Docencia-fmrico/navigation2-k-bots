@@ -35,8 +35,8 @@ def generate_launch_description():
         package='bt_behavior',
         executable='patrolling_main',
         remappings=[
-          ('input_scan', '/scan_raw'),
-          ('output_vel', '/nav_vel')
+          ('input_scan', '/scan_filtered'),
+          ('output_vel', '/commands/velocity')
         ],
         output='screen',
         parameters=[config_file]
