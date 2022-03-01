@@ -4,7 +4,9 @@
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
             <Action ID="GetWaypoint" goal="{waypoint}"/>
-            <Action ID="Move" goal="{waypoint}"/>
+            <Decorator ID="ForceSuccess">
+                <Action ID="Move" goal="{waypoint}"/>
+            </Decorator>
             <Condition ID="IsLastPoint"/>
         </Sequence>
     </BehaviorTree>

@@ -19,7 +19,7 @@
 #include "behaviortree_cpp_v3/bt_factory.h"
 #include "behaviortree_cpp_v3/utils/shared_library.h"
 #include "behaviortree_cpp_v3/loggers/bt_zmq_publisher.h"
-
+#include "behaviortree_cpp_v3/decorators/force_success_node.h"
 #include "ament_index_cpp/get_package_share_directory.hpp"
 
 #include "rclcpp/rclcpp.hpp"
@@ -37,7 +37,6 @@ int main(int argc, char * argv[])
   factory.registerFromPlugin(loader.getOSName("br2_get_waypoint_bt_node"));
   factory.registerFromPlugin(loader.getOSName("br2_move_bt_node"));
   factory.registerFromPlugin(loader.getOSName("br2_islastpoint_bt_node"));
-  
 
   std::string pkgpath = ament_index_cpp::get_package_share_directory("bt_behavior");
   std::string xml_file = pkgpath + "/behavior_tree_xml/behavior.xml";
