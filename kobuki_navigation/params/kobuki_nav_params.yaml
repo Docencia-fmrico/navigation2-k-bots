@@ -101,7 +101,7 @@ controller_server:
     min_theta_velocity_threshold: 0.005
     progress_checker_plugin: "progress_checker"
     goal_checker_plugin: "goal_checker"
-    controller_plugins: ["FollowPath_DWB", "FollowPath" ]
+    controller_plugins: ["FollowPath_Reg", "FollowPath" ]
 
     # Progress checker parameters
     progress_checker:
@@ -111,18 +111,18 @@ controller_server:
     # Goal checker parameters
     goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.25
+      xy_goal_tolerance: 0.30
+      yaw_goal_tolerance: 6.2831
       stateful: True
     # DWB parameters
-    FollowPath_DWB:
+    FollowPath:
       plugin: "dwb_core::DWBLocalPlanner"
       debug_trajectory_details: True
       min_vel_x: 0.0
       min_vel_y: 0.0
-      max_vel_x: 0.39
+      max_vel_x: 0.4
       max_vel_y: 0.0
-      max_vel_theta: 0.6
+      max_vel_theta: 0.8
       min_speed_xy: 0.0
       max_speed_xy: 0.5
       min_speed_theta: 0.0
@@ -141,7 +141,7 @@ controller_server:
       linear_granularity: 0.05
       angular_granularity: 0.025
       transform_tolerance: 0.2
-      xy_goal_tolerance: 0.25
+      xy_goal_tolerance: 0.3
       trans_stopped_velocity: 0.25
       short_circuit_trajectory_evaluation: True
       stateful: True
@@ -157,7 +157,7 @@ controller_server:
       RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
 
-    FollowPath:
+    FollowPath_Reg:
       plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
       desired_linear_vel: 0.4
       lookahead_dist: 0.3
@@ -175,7 +175,7 @@ controller_server:
       regulated_linear_scaling_min_speed: 0.25
       use_rotate_to_heading: true
       allow_reversing: false
-      rotate_to_heading_min_angle: 0.785
+      rotate_to_heading_min_angle: 0.485
       max_angular_accel: 3.2
 
 controller_server_rclcpp_node:
