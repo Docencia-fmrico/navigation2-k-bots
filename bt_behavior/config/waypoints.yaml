@@ -1,5 +1,7 @@
 patrolling_node:
   ros__parameters:
-    waypoints: ["wp1", "wp2"]
-    wp1: [-0.820, -9.71]
-    wp2: [-5.85, -0.06]
+    waypoints: ["wp0", "wp1", "wp2", "wp3"]
+    wp0: [-3.37, -2.46]
+    wp1: [-2.23, 3.43]
+    wp2: [0.32, 1.92]
+    wp3: [-1.68,2.03]
