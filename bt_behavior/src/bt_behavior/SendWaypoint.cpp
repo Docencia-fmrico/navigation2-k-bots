@@ -12,30 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bt_behavior/GetWaypoint.hpp"
+#include "bt_behavior/SendWaypoint.hpp"
 
 #include <iostream>
 #include <string>
 
 #include "behaviortree_cpp_v3/behavior_tree.h"
+#include "nav2_costmap_2d/costmap_2d.hpp"
+#include "nav_msgs/msg/occupancy_grid.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "rclcpp/rclcpp.hpp"
+#include "SendWaypoint.hpp"
 
 namespace bt_behavior {
 
 using namespace std::chrono_literals;
 
-GetWaypoint::GetWaypoint(const std::string& xml_tag_name, const std::string & action_name, const BT::NodeConfiguration& conf)
+SendWaypoint::SendWaypoint(const std::string& xml_tag_name, const std::string & action_name, const BT::NodeConfiguration& conf)
     : BT::ActionNodeBase(xml_tag_name, conf)
 
 {
+  data_map_ = node_->create_subscription<nav_msgs::msg::OccupancyGrid>("/map",10,std::bind(&SendWaypoint::MapCallback,node_,_1));
+
   config().blackboard->get("node", node_);
 }
 
-void GetWaypoint::halt() {return;}
+void SendWaypoint::halt() {return;}
 
-BT::NodeStatus GetWaypoint::tick() {
+BT::NodeStatus SendWaypoint::tick() {
   int counter_visited; //Counter waypoint visited
   if (status() == BT::NodeStatus::IDLE) {
     config().blackboard->get("waypoints", waypoints_);
@@ -58,17 +63,17 @@ BT::NodeStatus GetWaypoint::tick() {
 }  // namespace bt_behavior
 
 #include "behaviortree_cpp_v3/bt_factory.h"
-//BT_REGISTER_NODES(factory) { factory.registerNodeType<bt_behavior::GetWaypoint>("GetWaypoint"); }
+//BT_REGISTER_NODES(factory) { factory.registerNodeType<bt_behavior::SendWaypoint>("SendWaypoint"); }
 
 BT_REGISTER_NODES(factory)
 {
   BT::NodeBuilder builder =
     [](const std::string & name, const BT::NodeConfiguration & config)
     {
-      return std::make_unique<bt_behavior::GetWaypoint>(
+      return std::make_unique<bt_behavior::SendWaypoint>(
         name, "get_waypoint", config);
     };
 
-  factory.registerBuilder<bt_behavior::GetWaypoint>(
-    "GetWaypoint", builder);
+  factory.registerBuilder<bt_behavior::SendWaypoint>(
+    "SendWaypoint", builder);
 }

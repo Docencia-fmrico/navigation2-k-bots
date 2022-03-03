@@ -16,6 +16,8 @@ find_package(lifecycle_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(ament_index_cpp REQUIRED)
+find_package(nav2_costmap_2d REQUIRED)
+find_package(nav_msgs REQUIRED)
 
 find_package(ZMQ)
 if(ZMQ_FOUND)
@@ -37,14 +39,16 @@ set(dependencies
     geometry_msgs
     nav2_msgs
     ament_index_cpp
+    nav2_costmap_2d
+    nav_msgs
 )
 include_directories(include ${ZMQ_INCLUDE_DIRS})
 
-add_library(br2_get_waypoint_bt_node SHARED src/bt_behavior/GetWaypoint.cpp)
+add_library(br2_send_waypoint_bt_node SHARED src/bt_behavior/SendWaypoint.cpp)
 add_library(br2_move_bt_node SHARED src/bt_behavior/Move.cpp)
 add_library(br2_islastpoint_bt_node SHARED src/bt_behavior/IsLastPoint.cpp)
 list(APPEND plugin_libs
-  br2_get_waypoint_bt_node
+  br2_send_waypoint_bt_node
   br2_move_bt_node
   br2_islastpoint_bt_node
 

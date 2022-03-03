@@ -3,7 +3,7 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="GetWaypoint" goal="{waypoint}"/>
+            <Action ID="SendWaypoint" goal="{waypoint}"/>
             <Decorator ID="ForceSuccess">
                 <Action ID="Move" goal="{waypoint}"/>
             </Decorator>
@@ -12,7 +12,7 @@
     </BehaviorTree>
     <!-- ////////// -->
     <TreeNodesModel>
-        <Action ID="GetWaypoint">
+        <Action ID="SendWaypoint">
             <output_port name="goal"/>
         </Action>
         <Action ID="Move">

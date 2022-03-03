@@ -34,7 +34,7 @@ int main(int argc, char * argv[])
   BT::BehaviorTreeFactory factory;
   BT::SharedLibrary loader;
 
-  factory.registerFromPlugin(loader.getOSName("br2_get_waypoint_bt_node"));
+  factory.registerFromPlugin(loader.getOSName("br2_send_waypoint_bt_node"));
   factory.registerFromPlugin(loader.getOSName("br2_move_bt_node"));
   factory.registerFromPlugin(loader.getOSName("br2_islastpoint_bt_node"));
 

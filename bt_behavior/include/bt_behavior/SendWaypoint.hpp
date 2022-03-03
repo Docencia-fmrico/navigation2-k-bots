@@ -12,11 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef BT_BEHAVIOR__GET_WAYPOINT_HPP_
-#define BT_BEHAVIOR__GET_WAYPOINT_HPP_
+#ifndef BT_BEHAVIOR__SEND_WAYPOINT_HPP_
+#define BT_BEHAVIOR__SEND_WAYPOINT_HPP_
 
 #include <string>
 
+#include "nav2_costmap_2d/costmap_2d.hpp"
+#include "nav_msgs/msg/occupancy_grid.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "nav2_behavior_tree/bt_action_node.hpp"
 
@@ -31,16 +33,17 @@
 namespace bt_behavior
 {
 
-class GetWaypoint : public BT::ActionNodeBase
+class SendWaypoint : public BT::ActionNodeBase
 {
 public:
-  explicit GetWaypoint(
+  explicit SendWaypoint(
     const std::string & xml_tag_name,
     const std::string & action_name,
     const BT::NodeConfiguration & conf);
 
   BT::NodeStatus tick() override;
   void halt() override;
+  void MapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr data_map_);
   static BT::PortsList providedPorts()
   {
     return {
@@ -49,11 +52,13 @@ public:
   }
 
 private:
+  rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr data_map_;
   rclcpp::Node::SharedPtr node_;
   std::vector<std::string> waypoints_;
   int counter;
+
 };
 
 }  // namespace bt_behavior
 
-#endif  // BT_BEHAVIOR__GET_WAYPOINT_HPP_
+#endif  // BT_BEHAVIOR__SEND_WAYPOINT_HPP_
