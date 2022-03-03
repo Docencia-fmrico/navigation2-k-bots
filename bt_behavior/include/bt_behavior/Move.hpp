@@ -23,7 +23,7 @@
 #include "bt_behavior/ctrl_support/BTActionNode.hpp"
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
-
+#include "kobuki_ros_interfaces/msg/sound.hpp"
 namespace bt_behavior
 {
 
