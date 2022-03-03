@@ -23,6 +23,7 @@
 #include "nav2_msgs/action/navigate_to_pose.hpp"
 
 #include "behaviortree_cpp_v3/behavior_tree.h"
+#include "kobuki_ros_interfaces/msg/sound.hpp"
 
 namespace bt_behavior
 {
@@ -34,6 +35,7 @@ Move::Move(
 : bt_behavior::BtActionNode<nav2_msgs::action::NavigateToPose>(xml_tag_name, action_name,
     conf)
 {
+  soundPub_ = node_->create_publisher<kobuki_ros_interfaces::msg::Sound>("/commands/sound", 100);
 }
 
 void
@@ -49,10 +51,19 @@ BT::NodeStatus
 Move::on_success()
 {
   RCLCPP_INFO(node_->get_logger(), "navigation Suceeded");
-
+  kobuki_ros_interfaces::msg::Sound msg;
+  msg.value = msg.ON;
+  soundPub_->publish(msg);
   return BT::NodeStatus::SUCCESS;
 }
 
+BT::NodeStatus Move::on_aborted(){
+  RCLCPP_INFO(node_->get_logger(), "navigation Failled");
+  kobuki_ros_interfaces::msg::Sound msg;
+  msg.value = msg.ERROR;
+  soundPub_->publish(msg);
+  return BT::NodeStatus::FAILURE;
+}
 
 }  // namespace bt_behavior
 

@@ -37,13 +37,16 @@ public:
 
   void on_tick() override;
   BT::NodeStatus on_success() override;
-
+  BT::NodeStatus on_aborted() override;
+  
   static BT::PortsList providedPorts()
   {
     return {
       BT::InputPort<geometry_msgs::msg::PoseStamped>("goal")
     };
   }
+
+  rclcpp::Publisher<kobuki_ros_interfaces::msg::Sound>::SharedPtr soundPub_;
 };
 
 }  // namespace bt_behavior

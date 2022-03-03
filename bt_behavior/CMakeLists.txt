@@ -33,6 +33,7 @@ set(dependencies
     rclcpp_action
     behaviortree_cpp_v3
     action_msgs
+    kobuki_ros_interfaces
     lifecycle_msgs
     geometry_msgs
     nav2_msgs
