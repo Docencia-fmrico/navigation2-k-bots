@@ -11,6 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(behaviortree_cpp_v3 REQUIRED)
+find_package(kobuki_ros_interfaces REQUIRED)
 find_package(action_msgs REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
@@ -33,6 +34,7 @@ set(dependencies
     rclcpp_action
     behaviortree_cpp_v3
     action_msgs
+    kobuki_ros_interfaces
     lifecycle_msgs
     geometry_msgs
     nav2_msgs
