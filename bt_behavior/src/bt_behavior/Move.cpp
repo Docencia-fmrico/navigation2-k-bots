@@ -42,16 +42,31 @@ Move::Move(
     conf)
 {
   soundPub_ = node_->create_publisher<kobuki_ros_interfaces::msg::Sound>("/commands/sound", 100);
-  globalCostmapPub_ = node_->create_subscription<nav_msgs::msg::OccupancyGrid>("/map", 10, std::bind(&Move::CostmapCallback, this, _1));
+  RCLCPP_WARN(node_->get_logger(), "SOUND---------");
+  globalCostmapPub_ = node_->create_subscription<nav_msgs::msg::OccupancyGrid>("/global_costmap/costmap", 10, std::bind(&Move::CostmapCallback, this, _1));
+  RCLCPP_WARN(node_->get_logger(), "MAP-----------");
 }
 
 void Move::CostmapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg){
+  RCLCPP_WARN(node_->get_logger(), "CALLBACK-----------");
   grid_ = msg;
-  // this->resizeMap(grid_->info.width, grid_->info.height, grid_->info.resolution, grid_->info.origin.position.x, grid_->info.origin.position.y);
-
+  /*
+  this->resizeMap(grid_->info.width, grid_->info.height, grid_->info.resolution, grid_->info.origin.position.x, grid_->info.origin.position.y);
+  */
   std::cout << "mensaje" << grid_->info.width << grid_->info.height << std::endl;
-  //std::cout << "clase" << this->origin_x_ << this->origin_y_ << std::endl;
+  std::cout << "resolution" << grid_->info.resolution << std::endl;
+  std::cout << "origin" << grid_->info.origin.position.x << grid_->info.origin.position.y << std::endl;
+  std::cout << "A---------" << std::endl;
 
+  std::cout << "ORIGIN" << grid_->info.origin.position.x  << " | " << grid_->info.origin.position.y << std::endl;
+  unsigned int mx = static_cast<unsigned int>((wx_ - this->origin_x_) / grid_->info.resolution);
+  unsigned int  my = static_cast<unsigned int>((wy_ - this->origin_y_) / grid_->info.resolution);
+
+  std::cout << "mx = " << mx << " | my = " << my << std::endl;
+
+  unsigned char cost = getCost(6);
+
+  std::cout << "COST = " << cost << std::endl;
 
 }
 
@@ -59,12 +74,13 @@ void
 Move::on_tick()
 {
   geometry_msgs::msg::PoseStamped goal;
+
   getInput("goal", goal);
+  wx_ = goal.pose.position.x;
+  wy_ = goal.pose.position.y;
   RCLCPP_WARN(node_->get_logger(), "Destination [%lf, %lf]\n", goal.pose.position.x, goal.pose.position.y);
+
   goal_.pose = goal;
-
-  unsigned int cells_size_x;
-
 }
 
 BT::NodeStatus

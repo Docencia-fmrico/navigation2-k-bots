@@ -1,0 +1,128 @@
+[0.023s] Invoking command in '/home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/lucia/ROS2/colcon_ws/install/ros2controlcli:/home/lucia/ROS2/colcon_ws/install/launch_pal:/home/lucia/ROS2/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/bt_behavior -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior
+[0.107s] -- The C compiler identification is GNU 9.4.0
+[0.194s] -- The CXX compiler identification is GNU 9.4.0
+[0.205s] -- Check for working C compiler: /usr/bin/cc
+[0.316s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.319s] -- Detecting C compiler ABI info
+[0.442s] -- Detecting C compiler ABI info - done
+[0.456s] -- Detecting C compile features
+[0.456s] -- Detecting C compile features - done
+[0.458s] -- Check for working CXX compiler: /usr/bin/c++
+[0.569s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.571s] -- Detecting CXX compiler ABI info
+[0.685s] -- Detecting CXX compiler ABI info - done
+[0.695s] -- Detecting CXX compile features
+[0.696s] -- Detecting CXX compile features - done
+[0.701s] -- Found ament_cmake: 0.9.9 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.747s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.747s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.917s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.006s] -- Found rclcpp: 2.4.1 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.092s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.109s] -- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.303s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.342s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.459s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.539s] -- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.543s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.544s] -- Looking for pthread.h
+[1.658s] -- Looking for pthread.h - found
+[1.659s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.769s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.770s] -- Looking for pthread_create in pthreads
+[1.872s] -- Looking for pthread_create in pthreads - not found
+[1.873s] -- Looking for pthread_create in pthread
+[1.985s] -- Looking for pthread_create in pthread - found
+[1.987s] -- Found Threads: TRUE  
+[2.161s] -- Found rclcpp_lifecycle: 2.4.1 (/opt/ros/foxy/share/rclcpp_lifecycle/cmake)
+[2.202s] -- Found rclcpp_action: 2.4.1 (/opt/ros/foxy/share/rclcpp_action/cmake)
+[2.284s] -- Found behaviortree_cpp_v3: 3.6.0 (/opt/ros/foxy/share/behaviortree_cpp_v3/cmake)
+[2.291s] -- Found nav2_costmap_2d: 0.4.7 (/opt/ros/foxy/share/nav2_costmap_2d/cmake)
+[3.198s] -- Found Eigen3: TRUE (found version "3.3.7") 
+[3.665s] -- Found kobuki_ros_interfaces: 1.0.0 (/home/lucia/ROS2/colcon_ws/install/kobuki_ros_interfaces/share/kobuki_ros_interfaces/cmake)
+[3.746s] -- Found ZMQ: /usr/lib/x86_64-linux-gnu/libzmq.so  
+[3.746s] -- ZeroMQ found.
+[5.769s] -- Found ament_lint_auto: 0.9.6 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[5.909s] -- Found gtest sources under '/opt/ros/foxy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[5.911s] -- Check if compiler accepts -pthread
+[6.019s] -- Check if compiler accepts -pthread - yes
+[6.318s] -- Added test 'copyright' to check source files copyright and LICENSE
+[6.320s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[6.321s] -- Configured cppcheck include dirs: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/bt_behavior/include
+[6.321s] -- Configured cppcheck exclude dirs and/or files: 
+[6.323s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[6.323s] -- Configured cpplint exclude dirs and/or files: 
+[6.324s] -- Added test 'flake8' to check Python code syntax and style conventions
+[6.326s] -- Added test 'lint_cmake' to check CMake code style
+[6.327s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[6.329s] -- Added test 'uncrustify' to check C / C++ code style
+[6.329s] -- Configured uncrustify additional arguments: 
+[6.331s] -- Added test 'xmllint' to check XML markup files
+[6.337s] -- Configuring done
+[6.540s] -- Generating done
+[6.543s] -- Build files have been written to: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior
+[6.555s] Invoked command in '/home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/lucia/ROS2/colcon_ws/install/ros2controlcli:/home/lucia/ROS2/colcon_ws/install/launch_pal:/home/lucia/ROS2/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/bt_behavior -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior
+[6.560s] Invoking command in '/home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/lucia/ROS2/colcon_ws/install/ros2controlcli:/home/lucia/ROS2/colcon_ws/install/launch_pal:/home/lucia/ROS2/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake --build /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior -- -j16 -l16
+[6.618s] [35m[1mScanning dependencies of target patrolling_main[0m
+[6.619s] [35m[1mScanning dependencies of target gtest_main[0m
+[6.620s] [35m[1mScanning dependencies of target br2_move_bt_node[0m
+[6.620s] [35m[1mScanning dependencies of target br2_get_waypoint_bt_node[0m
+[6.624s] [35m[1mScanning dependencies of target gtest[0m
+[6.625s] [35m[1mScanning dependencies of target br2_islastpoint_bt_node[0m
+[6.635s] [  7%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[6.645s] [ 14%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[6.660s] [ 21%] [32mBuilding CXX object CMakeFiles/patrolling_main.dir/src/patrolling_main.cpp.o[0m
+[6.670s] [ 35%] [32mBuilding CXX object CMakeFiles/br2_move_bt_node.dir/src/bt_behavior/Move.cpp.o[0m
+[6.670s] [ 35%] [32mBuilding CXX object CMakeFiles/br2_get_waypoint_bt_node.dir/src/bt_behavior/GetWaypoint.cpp.o[0m
+[6.681s] [ 42%] [32mBuilding CXX object CMakeFiles/br2_islastpoint_bt_node.dir/src/bt_behavior/IsLastPoint.cpp.o[0m
+[7.717s] [ 50%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[7.766s] [ 50%] Built target gtest_main
+[9.562s] [ 57%] [32m[1mLinking CXX shared library libbr2_islastpoint_bt_node.so[0m
+[9.777s] [ 57%] Built target br2_islastpoint_bt_node
+[9.781s] [ 64%] [32m[1mLinking CXX executable patrolling_main[0m
+[9.834s] [ 71%] [32m[1mLinking CXX shared library libbr2_get_waypoint_bt_node.so[0m
+[10.051s] [ 71%] Built target patrolling_main
+[10.161s] [ 71%] Built target br2_get_waypoint_bt_node
+[10.378s] [ 78%] [32m[1mLinking CXX static library libgtest.a[0m
+[10.449s] [ 78%] Built target gtest
+[10.468s] [35m[1mScanning dependencies of target bt_action_test[0m
+[10.517s] [ 85%] [32mBuilding CXX object tests/CMakeFiles/bt_action_test.dir/bt_action_test.cpp.o[0m
+[14.317s] [ 92%] [32m[1mLinking CXX shared library libbr2_move_bt_node.so[0m
+[15.138s] [ 92%] Built target br2_move_bt_node
+[18.110s] [100%] [32m[1mLinking CXX executable bt_action_test[0m
+[18.800s] [100%] Built target bt_action_test
+[18.813s] Invoked command in '/home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/lucia/ROS2/colcon_ws/install/ros2controlcli:/home/lucia/ROS2/colcon_ws/install/launch_pal:/home/lucia/ROS2/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake --build /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior -- -j16 -l16
+[18.935s] Invoking command in '/home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/lucia/ROS2/colcon_ws/install/ros2controlcli:/home/lucia/ROS2/colcon_ws/install/launch_pal:/home/lucia/ROS2/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake --install /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior
+[18.949s] -- Install configuration: "Debug"
+[18.950s] -- Execute custom install script
+[18.950s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/lib/libbr2_get_waypoint_bt_node.so
+[18.966s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/lib/libbr2_move_bt_node.so
+[18.982s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/lib/libbr2_islastpoint_bt_node.so
+[18.998s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/lib/bt_behavior/patrolling_main
+[19.008s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/include//bt_behavior/GetWaypoint.hpp
+[19.018s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/include//bt_behavior/IsLastPoint.hpp
+[19.028s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/include//bt_behavior/Move.hpp
+[19.042s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/include//bt_behavior/ctrl_support/BTActionNode.hpp
+[19.058s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/include//bt_behavior/ctrl_support/BTLifecycleCtrlNode.hpp
+[19.077s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/behavior_tree_xml/behavior.xml
+[19.088s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/launch/patrolling.launch.py
+[19.104s] -- Up-to-date symlink: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/launch/patrolling.launch.py
+[19.104s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/config/waypoints.yaml
+[19.115s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/ament_index/resource_index/package_run_dependencies/bt_behavior
+[19.130s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/ament_index/resource_index/parent_prefix_path/bt_behavior
+[19.148s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/environment/ament_prefix_path.sh
+[19.164s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/environment/ament_prefix_path.dsv
+[19.180s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/environment/path.sh
+[19.197s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/environment/path.dsv
+[19.215s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/local_setup.bash
+[19.235s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/local_setup.sh
+[19.253s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/local_setup.zsh
+[19.272s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/local_setup.dsv
+[19.290s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/package.dsv
+[19.307s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/ament_index/resource_index/packages/bt_behavior
+[19.325s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/cmake/ament_cmake_export_include_directories-extras.cmake
+[19.345s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/cmake/ament_cmake_export_dependencies-extras.cmake
+[19.364s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/cmake/bt_behaviorConfig.cmake
+[19.381s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/cmake/bt_behaviorConfig-version.cmake
+[19.392s] -- Symlinking: /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/install/bt_behavior/share/bt_behavior/package.xml
+[19.414s] Invoked command in '/home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/lucia/ROS2/colcon_ws/install/ros2controlcli:/home/lucia/ROS2/colcon_ws/install/launch_pal:/home/lucia/ROS2/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake --install /home/lucia/ROS2/colcon_ws/src/navigation2-k-bots/build/bt_behavior
