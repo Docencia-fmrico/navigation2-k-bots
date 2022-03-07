@@ -24,18 +24,33 @@
 
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "kobuki_ros_interfaces/msg/sound.hpp"
+#include "nav2_costmap_2d/costmap_2d.hpp"
+#include "nav2_msgs/msg/costmap.hpp"
+#include "nav2_msgs/msg/costmap_meta_data.hpp"
+#include "nav_msgs/msg/occupancy_grid.hpp"
 
 namespace bt_behavior
 {
+using namespace std::chrono_literals;
+using std::placeholders::_1;
 
 Move::Move(
   const std::string & xml_tag_name,
   const std::string & action_name,
   const BT::NodeConfiguration & conf)
 : bt_behavior::BtActionNode<nav2_msgs::action::NavigateToPose>(xml_tag_name, action_name,
-    conf)
+    conf), nav2_costmap_2d::Costmap2D::Costmap2D()
 {
   soundPub_ = node_->create_publisher<kobuki_ros_interfaces::msg::Sound>("/commands/sound", 100);
+  globalCostmapPub_ = node_->create_subscription<nav_msgs::msg::OccupancyGrid::SharedPtr>("/map", 10, std::bind(&Move::CostmapCallback, this, _1));
+}
+
+void Move::CostmapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg){
+  grid_ = *msg;
+  this->resizeMap(grid_.info.width, grid_.info.height, grid_.info.resolution, grid_.info.origin.position.x, grid_.info.origin.position.y);
+
+  std::cout << "mensaje" << grid_.info.width << grid_.info.height << std::endl;
+  std::cout << "clase" << this->origin_x_ << this->origin_y_ << std::endl;
 }
 
 void
@@ -45,6 +60,9 @@ Move::on_tick()
   getInput("goal", goal);
   RCLCPP_WARN(node_->get_logger(), "Destination [%lf, %lf]\n", goal.pose.position.x, goal.pose.position.y);
   goal_.pose = goal;
+
+  unsigned int cells_size_x;
+
 }
 
 BT::NodeStatus

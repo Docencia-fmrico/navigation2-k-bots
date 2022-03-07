@@ -24,12 +24,19 @@
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
 #include "kobuki_ros_interfaces/msg/sound.hpp"
+
+#include "nav2_costmap_2d/costmap_2d.hpp"
+#include "nav2_msgs/msg/costmap.hpp"
+#include "nav2_msgs/msg/costmap_meta_data.hpp"
+
+#include "nav_msgs/msg/occupancy_grid.hpp"
+
 namespace bt_behavior
 {
 
-class Move : public bt_behavior::BtActionNode<nav2_msgs::action::NavigateToPose>
+class Move : public bt_behavior::BtActionNode<nav2_msgs::action::NavigateToPose>, nav2_costmap_2d::Costmap2D
 {
-public:
+public: 
   explicit Move(
     const std::string & xml_tag_name,
     const std::string & action_name,
@@ -38,6 +45,7 @@ public:
   void on_tick() override;
   BT::NodeStatus on_success() override;
   BT::NodeStatus on_aborted() override;
+  void CostmapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg);
   
   static BT::PortsList providedPorts()
   {
@@ -47,6 +55,9 @@ public:
   }
 
   rclcpp::Publisher<kobuki_ros_interfaces::msg::Sound>::SharedPtr soundPub_;
+  rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr globalCostmapPub_;
+  nav_msgs::msg::OccupancyGrid grid_;
+  
 };
 
 }  // namespace bt_behavior
