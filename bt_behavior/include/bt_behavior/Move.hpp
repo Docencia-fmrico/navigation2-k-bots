@@ -31,10 +31,12 @@
 
 #include "nav_msgs/msg/occupancy_grid.hpp"
 
+#include "rclcpp/rclcpp.hpp"
+
 namespace bt_behavior
 {
 
-class Move : public bt_behavior::BtActionNode<nav2_msgs::action::NavigateToPose>, nav2_costmap_2d::Costmap2D
+class Move : public bt_behavior::BtActionNode<nav2_msgs::action::NavigateToPose>
 {
 public: 
   explicit Move(
@@ -56,7 +58,7 @@ public:
 
   rclcpp::Publisher<kobuki_ros_interfaces::msg::Sound>::SharedPtr soundPub_;
   rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr globalCostmapPub_;
-  nav_msgs::msg::OccupancyGrid grid_;
+  nav_msgs::msg::OccupancyGrid::SharedPtr grid_;
   
 };
 

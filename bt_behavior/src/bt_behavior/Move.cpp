@@ -39,18 +39,20 @@ Move::Move(
   const std::string & action_name,
   const BT::NodeConfiguration & conf)
 : bt_behavior::BtActionNode<nav2_msgs::action::NavigateToPose>(xml_tag_name, action_name,
-    conf), nav2_costmap_2d::Costmap2D::Costmap2D()
+    conf)
 {
   soundPub_ = node_->create_publisher<kobuki_ros_interfaces::msg::Sound>("/commands/sound", 100);
-  globalCostmapPub_ = node_->create_subscription<nav_msgs::msg::OccupancyGrid::SharedPtr>("/map", 10, std::bind(&Move::CostmapCallback, this, _1));
+  globalCostmapPub_ = node_->create_subscription<nav_msgs::msg::OccupancyGrid>("/map", 10, std::bind(&Move::CostmapCallback, this, _1));
 }
 
 void Move::CostmapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg){
-  grid_ = *msg;
-  this->resizeMap(grid_.info.width, grid_.info.height, grid_.info.resolution, grid_.info.origin.position.x, grid_.info.origin.position.y);
+  grid_ = msg;
+  // this->resizeMap(grid_->info.width, grid_->info.height, grid_->info.resolution, grid_->info.origin.position.x, grid_->info.origin.position.y);
 
-  std::cout << "mensaje" << grid_.info.width << grid_.info.height << std::endl;
-  std::cout << "clase" << this->origin_x_ << this->origin_y_ << std::endl;
+  std::cout << "mensaje" << grid_->info.width << grid_->info.height << std::endl;
+  //std::cout << "clase" << this->origin_x_ << this->origin_y_ << std::endl;
+
+
 }
 
 void

@@ -35,16 +35,20 @@ int main(int argc, char * argv[])
   BT::SharedLibrary loader;
 
   factory.registerFromPlugin(loader.getOSName("br2_get_waypoint_bt_node"));
+  std::cerr << "1" << std::endl;
   factory.registerFromPlugin(loader.getOSName("br2_move_bt_node"));
-  factory.registerFromPlugin(loader.getOSName("br2_islastpoint_bt_node"));
 
+  factory.registerFromPlugin(loader.getOSName("br2_islastpoint_bt_node"));
+std::cerr << "2" << std::endl;
   std::string pkgpath = ament_index_cpp::get_package_share_directory("bt_behavior");
   std::string xml_file = pkgpath + "/behavior_tree_xml/behavior.xml";
 
   auto blackboard = BT::Blackboard::create();
   blackboard->set("node", node);
-  BT::Tree tree = factory.createTreeFromFile(xml_file, blackboard);
 
+  std::cerr << "3" << std::endl;
+  BT::Tree tree = factory.createTreeFromFile(xml_file, blackboard);
+std::cerr << "4" << std::endl;
 
   // Extract param from file.
   node->declare_parameter("waypoints");

@@ -56,6 +56,10 @@ list(APPEND plugin_libs
   br2_islastpoint_bt_node
 
 )
+ament_target_dependencies(br2_get_waypoint_bt_node ${dependencies})
+ament_target_dependencies(br2_move_bt_node ${dependencies})
+ament_target_dependencies(br2_islastpoint_bt_node ${dependencies})
+
 
 foreach(bt_plugin ${plugin_libs})
   ament_target_dependencies(${bt_plugin} ${dependencies})
