@@ -49,24 +49,31 @@ Move::Move(
 
 void Move::CostmapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg){
   RCLCPP_WARN(node_->get_logger(), "CALLBACK-----------");
+  
   grid_ = msg;
+  //Costmap2D(grid_);
   /*
   this->resizeMap(grid_->info.width, grid_->info.height, grid_->info.resolution, grid_->info.origin.position.x, grid_->info.origin.position.y);
   */
+
   std::cout << "mensaje" << grid_->info.width << grid_->info.height << std::endl;
   std::cout << "resolution" << grid_->info.resolution << std::endl;
   std::cout << "origin" << grid_->info.origin.position.x << grid_->info.origin.position.y << std::endl;
   std::cout << "A---------" << std::endl;
 
   std::cout << "ORIGIN" << grid_->info.origin.position.x  << " | " << grid_->info.origin.position.y << std::endl;
-  unsigned int mx = static_cast<unsigned int>((wx_ - this->origin_x_) / grid_->info.resolution);
-  unsigned int  my = static_cast<unsigned int>((wy_ - this->origin_y_) / grid_->info.resolution);
+  unsigned int mx;
+  unsigned int my;
+  worldToMap(wx_, wy_, mx, my);
+
+  //unsigned int mx = static_cast<unsigned int>((wx_ - this->origin_x_) / grid_->info.resolution);
+  //unsigned int  my = static_cast<unsigned int>((wy_ - this->origin_y_) / grid_->info.resolution);
 
   std::cout << "mx = " << mx << " | my = " << my << std::endl;
 
-  unsigned char cost = getCost(6);
+  //unsigned char cost = getCost(6);
 
-  std::cout << "COST = " << cost << std::endl;
+  //std::cout << "COST = " << cost << std::endl;
 
 }
 
