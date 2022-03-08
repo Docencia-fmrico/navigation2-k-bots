@@ -24,3 +24,16 @@ Habrá dos rondas:
 
 - Ronda 1: Habrá 4 waypoints, y ninguno en la posición de un obstáculo.
 - Ronda 2: Habrá 3-7 waypoints, alguno de ellos en la posición de un obstáculo. En este caso, se podrá ir al siguiente en cuanto se detecte este caso.
+
+
+
+
+# Detalles 
+
+**Behavior Tree**
+
+![image](https://user-images.githubusercontent.com/78978037/157194358-770efcf2-5517-44dc-ac37-c0d098698a95.png)
+
+**Controlador**: DWB Controller
+
+**Planificador**: NavFn Planner
