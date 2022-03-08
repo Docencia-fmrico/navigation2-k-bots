@@ -36,4 +36,7 @@ Habrá dos rondas:
 
 **Controlador**: DWB Controller
 
+- Otros controladores probados: TEB Controller, Regulated Pure Pursuit
+
+
 **Planificador**: NavFn Planner
